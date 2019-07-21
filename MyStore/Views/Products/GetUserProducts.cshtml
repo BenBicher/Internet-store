@@ -1,0 +1,79 @@
+﻿@model  MyStore.ViewModels.UserProductsViewModel
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "GetUserProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Shopping Cart</h2>
+<h2></h2>
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayName("OwnerId")
+        </th>
+        <th>
+            @Html.DisplayName("Title")
+        </th>
+        <th>
+            @Html.DisplayName("ShortDescription")
+        </th>
+        <th>
+            @Html.DisplayName("LongDescription")
+        </th>
+        <th>
+            @Html.DisplayName("Date")
+        </th>
+        <th>
+            @Html.DisplayName("Price")
+        </th>
+        <th>
+            @Html.DisplayName("State")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LongDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+
+            <td>
+                @Html.ActionLink("Remove", "DeleteProduct", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+<ul class="nav navbar-nav navbar-right">
+  
+    <li>
+        <h2>Total Price: @Html.DisplayFor(modelItem => modelItem.TotalPrice)|</h2>
+    </li>
+    
+    <li>
+    <h2>@Html.ActionLink("Press To Buy", "PressToBuy")</h2>
+    </li>
+    
+</ul>

@@ -1,0 +1,22 @@
+﻿@model  MyStore.Models.Product
+<div class="product pull-left">
+    <div class="btn">
+        <header>
+            <h2 style="text-align: center;">@Model.Title</h2>
+            <p>Posted on: <time>@Model.Date</time></p>
+        </header>
+        <p>@Model.ShortDescription</p>
+        <div>
+            @if (!Model.Picture1.IsEmpty())
+            {
+                <img src="@Url.Content(@Model.Picture1)" width="250" height="250" />
+            }
+        </div>
+        <div class="pull-right">
+            @Html.ActionLink("Add to Cart", "AddToCart", new { id = @Model.Id })
+        </div>
+        <div class="pull-left">
+            @Html.ActionLink("additional information", "Details", new { id = @Model.Id })
+        </div>
+    </div>
+</div>

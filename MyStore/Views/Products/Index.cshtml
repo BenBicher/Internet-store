@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MyStore.Models.Product>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.Identity.GetUserName() != null && User.Identity.GetUserName() != "")
+{
+    MyStore.Models.LoginViewModel.isLoged = true;
+}
+
+<h2>Products:</h2>
+
+@if (MyStore.Models.LoginViewModel.isLoged)
+{
+    <p>
+        <h3>@Html.ActionLink("Add New Product", "Create")</h3>
+    </p>
+}
+
+@foreach (var product in Model)
+{
+    <div class="btn" >
+        <section>
+            @Html.Partial("~/Views/Products/Product.cshtml", product)
+        </section>
+    </div>
+}
+

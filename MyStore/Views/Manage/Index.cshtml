@@ -1,0 +1,30 @@
+﻿@model MyStore.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+<h2>Change your account settings:</h2>
+
+<h2></h2>
+<h2></h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+
+<div>
+    <h4>
+        Change Password:[
+        @if (Model.HasPassword)
+            {
+            @Html.ActionLink("Change your password", "ChangePassword")
+        }
+        else
+        {
+            @Html.ActionLink("Create", "SetPassword")
+        }
+        ]
+    </h4>
+</div>
+<div>
+    <h4>
+        Change Properties:[@Html.ActionLink("Edit", "Edit")]
+    </h4>
+</div>
